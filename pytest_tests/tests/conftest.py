@@ -4,12 +4,14 @@ from pages.bugs_form_page import BugsFormPage
 import os
 from datetime import datetime
 
+headless = os.getenv("HEADLESS", "0") == "1"
+
 os.makedirs("pytest_tests/screenshots_pytest", exist_ok=True)
 
 @pytest.fixture(scope="session")
 def browser():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, args=["--start-maximized"])
+        browser = p.chromium.launch(headless=headless, args=["--start-maximized"])
         yield browser
         browser.close()
 
