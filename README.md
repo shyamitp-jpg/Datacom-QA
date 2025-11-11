@@ -1,25 +1,17 @@
-# Datacom QA - Bugs Form Automation
+# QA Bugs Form Automation – Playwright + Pytest
 
-This repo contains automated UI tests for the Bug Report Form at:
+This project automates UI validation for the Bug Form page:
 https://qa-practice.netlify.app/bugs-form
 
-## Tech Stack
-- Python 3.11+
-- Playwright (suggested framework)
-- Behave (BDD)
+## Framework
+- **Language:** Python
+- **Framework:** Pytest + Playwright
+- **Pattern:** Page Object Model + Arrange–Act–Assert
+- **Extras:** Screenshots on failure (auto)
 
-## How to Run
-
+## Setup
 ```bash
-# 1. Setup
 python -m venv .venv
-.venv\Scripts\activate        # Windows
-# source .venv/bin/activate   # Mac/Linux
-
-pip install playwright behave
+.venv\Scripts\activate
+pip install -r requirements.txt
 playwright install
-
-# 2. Run tests (headed + slow so you can watch)
-behave --no-capture            # Shows print statements
-# Or with color + stop on first failure
-behave --stop -k
