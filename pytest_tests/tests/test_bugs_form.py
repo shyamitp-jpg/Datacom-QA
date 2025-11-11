@@ -90,7 +90,7 @@ def test_negative_password_invalid_accepted(form, password, desc):
 # ===============================================
 def test_bug_02_phone_type_text_not_tel(form):
     form.slow_fill()
-    assert form.page.get_attribute("#phone", "type") == "text"
+    assert form.page.get_attribute("#phone", "type") != "text"
 
 def test_bug_03_first_name_no_required(form):
     form.slow_fill()
@@ -103,10 +103,10 @@ def test_bug_04_terms_no_validation(form):
     form.page.click("#registerBtn")
     expect(form.page.locator(".alert-danger")).to_be_visible()  # BUG
 
-def test_bug_05_password_label_missing_asterisk(form):
+def test_password_label_shows_required_asterisk(form):
     form.slow_fill()
     label = form.page.locator("label[for='exampleInputPassword1']").text_content()
-    assert "*" not in label 
+    assert "*" in label 
 
 def test_bug_06_phone_no_minlength(form):
     form.slow_fill()
